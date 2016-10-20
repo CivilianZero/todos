@@ -5,6 +5,7 @@ var toDo = document.querySelector('.todo'),
     filterC = document.querySelector('.filter-complete'),
     filterIC = document.querySelector('.filter-incomplete'),
     id = 0,
+    numberOfTasks = 0,
     // containers for ToDo items
     toDoList = [];
 
@@ -14,6 +15,15 @@ function ToDoItem(content, id) {
     this.id = id;
     this.complete = false;
     this.hidden = false;
+}
+
+function updateCount (up) {
+    if (up === 'up') {
+        numberOfTasks++;
+    } else {
+        numberOfTasks--;
+    }
+    document.querySelector('span').textContent(numberOfTasks + 'task(s)');
 }
 
 input.addEventListener('keypress', function (event) {
@@ -37,6 +47,9 @@ input.addEventListener('keypress', function (event) {
 
         // reset text input to empty
         input.value = '';
+
+        // increment total number of incomplete tasks
+        updateCount('up');
     }
 });
 
@@ -53,6 +66,9 @@ toDo.addEventListener('click', function (e) {
 
         // add complete class
         e.target.classList.toggle('complete');
+
+        // de-increment total number of incomplete tasks
+        updateCount('down');
     }
 });
 
@@ -68,6 +84,9 @@ toDo.addEventListener('click', function (e) {
         // remove from array
         let index = toDoList.findIndex((value) => value.id === id)
         toDoList.splice(index, 1);
+
+        // de-increment total number of incomplete tasks
+        updateCount('down');
     }
 });
 
