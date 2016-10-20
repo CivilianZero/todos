@@ -23,7 +23,7 @@ function updateCount (up) {
     } else {
         numberOfTasks--;
     }
-    document.querySelector('span').textContent(numberOfTasks + 'task(s)');
+    document.querySelector('span').textContent = numberOfTasks + ' task(s)';
 }
 
 input.addEventListener('keypress', function (event) {
