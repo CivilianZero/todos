@@ -1,10 +1,13 @@
 *, *:after, *:before {
 	box-sizing: border-box
 }
-
+/*@font-face {
+	font-family: 'Josefin Sans', sans-serif;
+	src: url(Josefin Sans/);
+}*/
 
 body {
-	background-color: #DCDCDC;
+	/*background-color: #DCDCDC;*/
 }
 
 h1 {
@@ -24,12 +27,25 @@ section {
 }
 
 input {
-	padding: 40px 70px;
-	outline: none;
-	border: none;
+	padding: 30px 50px;
+	border: #DCDCDC;
+	font-size: 30px;
+	font-family: 'Josefin Sans', sans-serif;
+	border: 2px solid #DCDCDC;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 button {
 	display: inline-block;
+	border: none;
+	box-shadow: none;
+	background-color: #FFFFFF;
+
 }
 span {
 	display: inline-block;
@@ -37,8 +53,11 @@ span {
 	width: 10px;
 	margin-right: 10%; 
  }
-#one {
-	width: 40px;
+#one,
+#two,
+#three {
+	font-family: 'Dosis', sans-serif;
+	width: 70px;
 	height: 25px;
 	float: center;
 	text-align: left;
@@ -46,22 +65,15 @@ span {
 	border: none;
 	background-color: #EFEFEF;
 }
-#two {
-	text-align: left;
-	width: 40px;
-	height: 25px;
-	float: center;
-	outline: none;
-	border: none;
-	background-color: #EFEFEF;
+#two,
+#three {
+	margin-top: 10px;
 }
-#three{
-	width: 40px;
-	height: 25px;
-	float: center;
-	outline: none;
+
+li {
+	color: #686868;
 	border: none;
-	background-color: #EFEFEF;
+	outline: none;
 }
 .clearfix:after {
     content: "";
