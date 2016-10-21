@@ -64,11 +64,14 @@ toDo.addEventListener('click', function (e) {
             }
         });
 
+        // change total number of incomplete tasks
+        if (!e.target.classList.contains('complete')) {
+            updateCount('down');
+        } else if (e.target.classList.contains('complete')) {
+            updateCount('up')
+        }
         // add complete class
         e.target.classList.toggle('complete');
-
-        // de-increment total number of incomplete tasks
-        updateCount('down');
     }
 });
 
