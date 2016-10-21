@@ -99,6 +99,7 @@ li {
     list-style-type: none;
     font-size: 32px;
     margin-bottom: 10px;
+    font-family: 'Dosis', sans-serif;
 }
 li.complete {
     color: rgba(200,200,200, .5);
