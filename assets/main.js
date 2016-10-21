@@ -100,11 +100,14 @@ function repopulate(value) {
     var li = document.createElement('li'),
         remove = document.createElement('button');
 
-    //recreate list item
+    // recreate list item
     li.textContent = value.content;
     li.classList.add('todo-item');
     li.id = value.id;
     toDo.appendChild(li);
+    if (value.complete) {
+        li.classList.add('complete');
+    }
 
     // create 'remove' button
     remove.textContent = 'X';
@@ -139,7 +142,6 @@ filterC.addEventListener('click', function () {
             value.hidden = true;
         }
     });
-
 });
 
 // event listener for filter/show only Incomplete
