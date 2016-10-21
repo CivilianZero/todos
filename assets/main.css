@@ -36,10 +36,10 @@ input {
 	text-align: center;
 }
 
-input:hover,
-select:hover,
-textarea:hover,
-button:hover {
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
     outline: none;
 }
 button {
@@ -86,8 +86,8 @@ span {
 
 ul {
 	text-align: center;
-	margin: 0 227px;
-	width: 40%;
+	margin: 0 auto;
+	width: 25%;
     padding: 0;
 }
 
