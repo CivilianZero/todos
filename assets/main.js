@@ -89,7 +89,9 @@ toDo.addEventListener('click', function (e) {
         toDoList.splice(index, 1);
 
         // de-increment total number of incomplete tasks
-        updateCount('down');
+        if (!goAway.classList.contains('complete')) {
+            updateCount('down');
+        }
     }
 });
 
