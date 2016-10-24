@@ -6,7 +6,8 @@ var toDo = document.querySelector('.todo'),
     filterIC = document.querySelector('.filter-incomplete'),
     id = 0,
     numberOfTasks = 0,
-    // containers for ToDo items
+    completeTasks = 0,
+    // container for ToDo items
     toDoList = [];
 
 // object constructor to match <li> ToDo items
@@ -17,13 +18,21 @@ function ToDoItem(content, id) {
     this.hidden = false;
 }
 
-function updateCount (up) {
-    if (up === 'up') {
-        numberOfTasks++;
+function updateCount (up, task) {
+    if (task === 'incomplete') {
+        if (up === 'up') {
+            numberOfTasks++;
+        } else {
+            numberOfTasks--;
+        }
     } else {
-        numberOfTasks--;
+        if (up === 'up') {
+            completeTasks++;
+        } else {
+            completeTasks--;
+        }
     }
-    document.querySelector('#tasks').textContent = numberOfTasks + ' task(s)';
+    document.querySelector('#tasks').textContent = 'Incomplete task(s): ' + numberOfTasks + ' Complete task(s): ' + completeTasks;
 }
 
 input.addEventListener('keypress', function (event) {
@@ -49,7 +58,7 @@ input.addEventListener('keypress', function (event) {
         input.value = '';
 
         // increment total number of incomplete tasks
-        updateCount('up');
+        updateCount('up', 'incomplete');
     }
 });
 
@@ -64,11 +73,13 @@ toDo.addEventListener('click', function (e) {
             }
         });
 
-        // change total number of incomplete tasks
+        // update number of complete and incomplete tasks
         if (!e.target.classList.contains('complete')) {
-            updateCount('down');
+            updateCount('down', 'incomplete');
+            updateCount('up', 'complete');
         } else if (e.target.classList.contains('complete')) {
-            updateCount('up')
+            updateCount('up', 'incomplete');
+            updateCount('down', 'complete');
         }
         // add complete class
         e.target.classList.toggle('complete');
@@ -88,9 +99,11 @@ toDo.addEventListener('click', function (e) {
         let index = toDoList.findIndex((value) => value.id === id)
         toDoList.splice(index, 1);
 
-        // de-increment total number of incomplete tasks
+        // update total number of complete and incomplete tasks
         if (!goAway.classList.contains('complete')) {
-            updateCount('down');
+            updateCount('down', 'incomplete');
+        } else if (goAway.classList.contains('complete')) {
+            updateCount('down', 'complete');
         }
     }
 });
